@@ -58,6 +58,12 @@ Here are some tasks for you to work on:
 
 `User Story: As a user, I want to use the Book Manager API to delete a book using its ID`
 
+### Assumtions
+
+I'm not sure what the final output is supposed to be, so I'm guessing a 204 (no content) to be sent back. I'll put this in my test, but then might change if it sends something different back. I did think 404, but then realised that it will send a 404 if the bookId doesn't exist (ie false positive).
+
+
+
 📘 Extension Task: Oh no! 😭 We've only covered the happy paths in the solution, can you figure out a way
 to add in exception handling to the project?
 
