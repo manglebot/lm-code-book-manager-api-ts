@@ -150,4 +150,19 @@ describe("DELETE /api/v1/books/{bookId} endpoint", () => {
 		expect(res.statusCode).toEqual(200);
 	});
 
+	// test("status code 404 for a book that is already deleted", async () => {
+	// 	// Arrange
+	// 	const NON_EXISTING_BOOK_ID = -1;
+
+	// 	const mockDeleteBook = jest
+	// 		.spyOn(bookService, "deleteBook")
+	// 		.mockResolvedValue(NON_EXISTING_BOOK_ID);
+
+	// 	// Act
+	// 	const res = await request(app).delete("/api/v1/books/3");
+
+	// 	// Assert
+	// 	expect(res.statusCode).toEqual(404);
+	// });
+
 });
