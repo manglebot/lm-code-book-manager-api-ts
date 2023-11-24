@@ -79,7 +79,6 @@ describe("GET /api/v1/books/{bookId} endpoint", () => {
 
 	test("status code successfully 404 for a book that is not found", async () => {
 		// Arrange
-
 		jest
 			.spyOn(bookService, "getBook")
 			// this is a weird looking type assertion!
@@ -141,7 +140,7 @@ describe("DELETE /api/v1/books/{bookId} endpoint", () => {
 		// Arrange
 		const mockDeleteBook = jest
 			.spyOn(bookService, "deleteBook")
-			.mockResolvedValue(dummyBookData[1].bookId);
+			.mockResolvedValue(1);
 
 		// Act
 		const res = await request(app).delete("/api/v1/books/2");
@@ -150,19 +149,17 @@ describe("DELETE /api/v1/books/{bookId} endpoint", () => {
 		expect(res.statusCode).toEqual(200);
 	});
 
-	// test("status code 404 for a book that is already deleted", async () => {
-	// 	// Arrange
-	// 	const NON_EXISTING_BOOK_ID = -1;
+	test("status code successfully 404 for a book that is not found", async () => {
+		// Arrange
 
-	// 	const mockDeleteBook = jest
-	// 		.spyOn(bookService, "deleteBook")
-	// 		.mockResolvedValue(NON_EXISTING_BOOK_ID);
+		jest
+			.spyOn(bookService, "deleteBook")
+			.mockResolvedValue(0);
+		// Act
+		const res = await request(app).delete("/api/v1/books/77");
 
-	// 	// Act
-	// 	const res = await request(app).delete("/api/v1/books/3");
-
-	// 	// Assert
-	// 	expect(res.statusCode).toEqual(404);
-	// });
+		// Assert
+		expect(res.statusCode).toEqual(404);
+	});
 
 });
