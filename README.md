@@ -60,8 +60,7 @@ Here are some tasks for you to work on:
 
 ### Assumtions
 
-I'm not sure what the final output is supposed to be, so I'm guessing a 204 (no content) to be sent back. I'll put this in my test, but then might change if it sends something different back. I did think 404, but then realised that it will send a 404 if the bookId doesn't exist (ie false positive).
-
+I wasn't sure what status the final output is supposed to be, so I tested a 204 (no content) for delete, but changed to 200 (success) for when the delete is a success. Also it sends 1 back if success (in Postman). Tested successfully with Postman.
 
 
 📘 Extension Task: Oh no! 😭 We've only covered the happy paths in the solution, can you figure out a way
