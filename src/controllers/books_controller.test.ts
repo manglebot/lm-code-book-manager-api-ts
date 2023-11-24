@@ -131,6 +131,17 @@ describe("POST /api/v1/books endpoint", () => {
 		// Assert
 		expect(res.statusCode).toEqual(400);
 	});
+
+	test("status code 409 Conflict -  for trying to save with an id that already exists", async () => {
+		// Act
+		const res = await request(app)
+			.post("/api/v1/books")
+			.send({ bookId: 1, title: "The Hobbit", author: "J. R. R. Tolkien", description: "Someone finds a nice piece of jewellery while on holiday." });
+
+		// Assert
+		expect(res.statusCode).toEqual(409);
+	});
+
 });
 
 
