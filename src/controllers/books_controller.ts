@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import * as bookService from "../services/books";
+import { Book } from "../models/book";
 
 export const getBooks = async (req: Request, res: Response) => {
 	const books = await bookService.getBooks();
@@ -19,12 +20,34 @@ export const getBook = async (req: Request, res: Response) => {
 
 export const saveBook = async (req: Request, res: Response) => {
 	const bookToBeSaved = req.body;
+	//const bookId = req.params.bookId;
+
 	try {
 		const book = await bookService.saveBook(bookToBeSaved);
 		res.status(201).json(book);
 	} catch (error) {
 		res.status(400).json({ message: (error as Error).message });
 	}
+
+	// try {
+	// 	const existingBook = await bookService.getBook(Number(bookId));
+	// 	if (existingBook) {
+	// 		res.status(409).json("Book already exists");
+	// 	} else {
+	// 		const book = await bookService.saveBook(bookToBeSaved);
+	// 		res.status(201).json(book);
+	// 	}
+	// } catch (error) {
+	// 	res.status(400).json({ message: (error as Error).message });
+	// }
+
+	// **** more 
+	
+	///** this is actual data *** //{"bookId":1,"title":"The Hobbit","author":"J. R. R. Tolkien","description":"Someone finds a nice piece of jewellery while on holiday."}
+
+	// console.log(`bookToBeSaved: ${JSON.stringify(bookToBeSaved as Book)}`);
+	// console.log(`existingBook: ${JSON.stringify(existingBook as Book)}`);
+
 };
 
 // User Story 4 - Update Book By Id Solution
